@@ -22,6 +22,13 @@
 <div id="participants"></div>
 <div id="collaboration"></div>
 
+<p>
+  <a target="_https"
+     href="//wal.sh/collaboration-scoring/icons/9760-200.png">
+    <img src="//wal.sh/collaboration-scoring/icons/9760-200.png"/>
+  </a>
+</p>
+
 <script src="//wal.sh/collaboration-scoring/app.js">
 </script>
 </body>
