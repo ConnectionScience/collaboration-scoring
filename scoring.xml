@@ -26,11 +26,11 @@
 
 <h3>Collaboration Scores</h3>
 
-<p>
+<p><a onClick="showParticipants()">onClick="showParticipants()"</a></p>
+
 <input class="button" type="button" value="Show participants!" id="showParticipants"
     style="visibility:hidden;"
     onClick="showParticipants()"/>
-</p>
 
 <div id="participants"></div>
 <div id="collaboration"></div>
