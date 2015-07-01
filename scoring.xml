@@ -5,7 +5,7 @@
  * the License at
  *
  * http://www.apache.org/licenses/LICENSE-2.0
- *	
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
@@ -17,81 +17,27 @@
 		<Require feature="views" />
 		<Require feature="locked-domain" />
 	</ModulePrefs>
-	<Content type="html"><![CDATA[     
+	<Content type="html"><![CDATA[
 
 <html>
-<style type="text/css">
-<!--
-.button {
-  border-radius: 3px;
-  -moz-border-radius: 3px;
-  background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ddd));
-  background: -moz-linear-gradient(top, #fff, #ddd);  
-  border: 1px solid #bbb;
-}
-
-.button:active {
-	background: -webkit-gradient(linear, left top, left bottom, from(#aaa), to(#333)); 
-	background: -moz-linear-gradient(bottom, #ddd, #aaa); }
-
--->
-</style>
-<body>
+<link rel="stylesheet" href="//wal.sh/collaboration/scoring/app.css" />
 
 <script src="//plus.google.com/hangouts/_/api/v1/hangout.js"></script>
 
-<h3>Simple Hangout App</h3>
+<h3>Collaboration Scores</h3>
 
 <p>
-<input class="button" type="button" value="Show participants!" id="showParticipants" 
+<input class="button" type="button" value="Show participants!" id="showParticipants"
     style="visibility:hidden;"
     onClick="showParticipants()"/>
 </p>
 
-<div id="participantsDiv"></div>
+<div id="participants"></div>
+<div id="collaboration"></div>
 
-<hr>
-
-<p><a href="http://developers.google.com/+/hangouts/getting-started">Read the docs</a> to learn more about developing hangouts!</a></p>
-
-<script>
-function showParticipants() {
-  var participants = gapi.hangout.getParticipants();
-
-  var retVal = '<p>Participants: </p><ul>';
-
-  for (var index in participants) {
-    var participant = participants[index];
-
-    if (!participant.person) {
-      retVal += '<li>A participant not running this app</li>';
-    }
-    retVal += '<li>' + participant.person.displayName + '</li>';
-  }
-
-  retVal += '</ul>';
-
-  var div = document.getElementById('participantsDiv');
-
-  div.innerHTML = retVal;
-}
-
-function init() {
-  // When API is ready...                                                         
-  gapi.hangout.onApiReady.add(
-      function(eventObj) {
-        if (eventObj.isApiReady) {
-          document.getElementById('showParticipants')
-            .style.visibility = 'visible';
-        }
-      });
-}
-
-// Wait for gadget to load.                                                       
-gadgets.util.registerOnLoadHandler(init);
+<script src="//wal.sh/collaboration/scoring/app.js">
 </script>
 </body>
 ]]>
 </Content>
 </Module>
-
