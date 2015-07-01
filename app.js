@@ -1,25 +1,40 @@
-function showParticipants() {
-  var participants = gapi.hangout.getParticipants();
+var showParticipants = function() {
+    var participants = gapi.hangout.getParticipants();
+    var retVal = '<p>Participants: </p><ul>';
+    console.log(participants);
+    for (var index in participants) {
+        var participant = participants[index];
 
-  var retVal = '<p>Participants: </p><ul>';
-
-  for (var index in participants) {
-    var participant = participants[index];
-
-    if (!participant.person) {
-      retVal += '<li>A participant not running this app</li>';
+        if (!participant.person) {
+            retVal += '<li>A participant not running this app</li>';
+        }
+        retVal += '<li>' + participant.person.displayName + '</li>';
     }
-    retVal += '<li>' + participant.person.displayName + '</li>';
-  }
+    retVal += '</ul>';
+    var div = document.getElementById('participants');
+    div.innerHTML = retVal;
+};
 
-  retVal += '</ul>';
+var showCollaboration = function() {
+    var retVal = '<p>Broadcaster: </p>';
+    var time = (new Date()).getTime();
+    console.log(time, 'showCollaboration()');
+    if (participants) {
+        for (var index in participants) {
+            var participant = participants[index];
 
-  var div = document.getElementById('participants');
+            if (participant && participant.person && participant.isBroadcaster) {
+                retVal += '<tt>' + time + ',' +
+                    participant.person.id  + ',' +
+                    participant.person.displayName + '</tt>';
+            }
+        }
+    }
+    var div = document.getElementById('collaboration');
+    div.innerHTML = retVal;
+};
 
-  div.innerHTML = retVal;
-}
-
-function init() {
+var init = function() {
   // When API is ready...
   gapi.hangout.onApiReady.add(
       function(eventObj) {
@@ -28,7 +43,9 @@ function init() {
             .style.visibility = 'visible';
         }
       });
-}
+
+    setInterval(showCollaboration, 3000);
+};
 
 // Wait for gadget to load.
 gadgets.util.registerOnLoadHandler(init);
