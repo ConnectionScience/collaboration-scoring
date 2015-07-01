@@ -8,7 +8,13 @@ var showParticipants = function() {
         if (!participant.person) {
             retVal += '<li>A participant not running this app</li>';
         }
+
+        var broadcaster = '';
+        if (participant.isBroadcaster) {
+            broadcaster = '<b>*</b>';
+        }
         retVal += '<li>' +
+            broadcaster +
             '<img width="16" height="16" src="' +
             participant.person.image.url +
             '"/> ' +
