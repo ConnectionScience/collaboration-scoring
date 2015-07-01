@@ -22,7 +22,7 @@ var showParticipants = function() {
 };
 
 var showCollaboration = function() {
-    var retVal = '<p>Broadcaster: </p>';
+    var retVal = 'None';
     var time = (new Date()).getTime();
     console.log(time, 'showCollaboration()', participants);
     if (participants) {
@@ -33,14 +33,14 @@ var showCollaboration = function() {
                 participant.isBroadcaster) {
                 console.log('Broadcasting: ',
                             participant.person.displayName);
-                retVal += '<tt>' + time + ',' +
+                retVal = '<tt>' + time + ',' +
                     participant.person.id  + ',' +
                     participant.person.displayName + '</tt>';
             }
         }
     }
     var div = document.getElementById('collaboration');
-    div.innerHTML = retVal;
+    div.innerHTML = '<p>Broadcaster: </p>' + retVal;
 };
 
 var init = function() {
@@ -57,4 +57,9 @@ var init = function() {
 };
 
 // Wait for gadget to load.
-gadgets.util.registerOnLoadHandler(init);
+if (typeof gadgets !== 'undefined') {
+    gadgets.util.registerOnLoadHandler(init);
+} else {
+    console.warn('gadgets not available');
+    console.log('showParticipants and showCollaboration can be run from console');
+}
