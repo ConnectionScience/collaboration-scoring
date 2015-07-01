@@ -20,7 +20,7 @@
 	<Content type="html"><![CDATA[
 
 <html>
-<link rel="stylesheet" href="//wal.sh/collaboration/scoring/app.css" />
+<link rel="stylesheet" href="//wal.sh/collaboration-scoring/app.css" />
 
 <script src="//plus.google.com/hangouts/_/api/v1/hangout.js"></script>
 
@@ -35,7 +35,7 @@
 <div id="participants"></div>
 <div id="collaboration"></div>
 
-<script src="//wal.sh/collaboration/scoring/app.js">
+<script src="//wal.sh/collaboration-scoring/app.js">
 </script>
 </body>
 ]]>
