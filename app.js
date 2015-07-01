@@ -22,6 +22,7 @@ var showParticipants = function() {
 };
 
 var showCollaboration = function() {
+    var participants = gapi.hangout.getParticipants();
     var retVal = 'None';
     var time = (new Date()).getTime();
     console.log(time, 'showCollaboration()', participants);
