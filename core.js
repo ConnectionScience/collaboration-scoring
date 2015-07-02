@@ -59,18 +59,15 @@ gapi.hangout.av.onVolumesChanged.add(
         var volumes = evt.volumes;
         var re = /^hangout/;
         var user = 'unknown';
+        // merge volumes into known talker state
         for (var k in volumes) {
-            if (re.test(k)) {
-                user = k;
-                break;
-            };
+            if(talkers[k]) {
+                talkers[k] += volumes[k];
+            } else {
+                talkers[k] = volumes[k];
+            }
         }
 
-        if (talkers[user]) {
-            talkers[user]++;
-        } else {
-            talkers[user] = 1;
-        }
         var div = document.getElementById('talking');
         div.innerHTML = '<h2>Talking:</h2><pre>' +
             JSON.stringify(talkers) + '</pre>';
