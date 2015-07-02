@@ -72,5 +72,6 @@ gapi.hangout.av.onVolumesChanged.add(
             talkers[user] = 1;
         }
         var div = document.getElementById('talking');
-        div.innerHTML = '<h2>Talking:</h2>' + talkers[user];
+        div.innerHTML = '<h2>Talking:</h2><pre>' +
+            JSON.stringify(talkers) + '</pre>';
     });
