@@ -1,6 +1,6 @@
 var showParticipants = function() {
     var participants = gapi.hangout.getParticipants();
-    var retVal = '<p>Participants: </p><ul>';
+    var retVal = '<h2>Participants:</h2><ul>';
     console.log(participants);
     for (var index in participants) {
         var participant = participants[index];
@@ -38,7 +38,7 @@ var showCollaboration = function() {
 
             if (participant && participant.person &&
                 participant.isBroadcaster) {
-                console.log('Broadcasting: ',
+                console.log('Broadcasting:',
                             participant.person.displayName);
                 retVal = '<tt>' + time + ',' +
                     participant.person.id  + ',' +
@@ -47,7 +47,7 @@ var showCollaboration = function() {
         }
     }
     var div = document.getElementById('collaboration');
-    div.innerHTML = '<p>Broadcaster: </p>' + retVal;
+    div.innerHTML = '<h2>Broadcaster:</h2>' + retVal;
 };
 
 var talkers = {};
@@ -63,4 +63,6 @@ gapi.hangout.av.onVolumesChanged.add(
         } else {
             talkers[user] = 1;
         }
+        var div = document.getElementById('talking');
+        div.innerHTML = '<h2>Talking:</h2>' + talkers[user];
     });
