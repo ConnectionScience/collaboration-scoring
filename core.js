@@ -56,9 +56,11 @@ var talkers = {};
 gapi.hangout.av.onVolumesChanged.add(
     function(evt) {
         console.log('Talker', evt, talkers);
-        if (talkers[evt.v]) {
-            talkers[evt.v]++;
+        // evt.volumes.first()
+        var user = 'all';
+        if (talkers[user]) {
+            talkers[user]++;
         } else {
-            talkers[evt.v] = 1;
+            talkers[user] = 1;
         }
     });
