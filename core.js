@@ -56,8 +56,16 @@ var talkers = {};
 gapi.hangout.av.onVolumesChanged.add(
     function(evt) {
         console.log('Talker', evt, talkers);
-        // evt.volumes.first()
-        var user = 'all';
+        var volumes = evt.volumes;
+        var re = /^hangout/;
+        var user = 'unknown';
+        for (var k in volumes) {
+            if (re.test(k)) {
+                user = k;
+                break;
+            };
+        }
+
         if (talkers[user]) {
             talkers[user]++;
         } else {
