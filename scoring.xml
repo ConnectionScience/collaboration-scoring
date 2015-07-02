@@ -9,13 +9,14 @@
 <html>
 <link rel="stylesheet" href="//wal.sh/collaboration-scoring/app.css" />
 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"/>
+
 <script src="//plus.google.com/hangouts/_/api/v1/hangout.js"></script>
 
 <h3>Collaboration Scores</h3>
 
-<p><a onClick="showParticipants()">onClick="showParticipants()"</a></p>
-
-<input class="button" type="button" value="Show participants!" id="showParticipants"
+<input class="button" type="button" value="showParticipants()" id="showParticipants"
     style="visibility:hidden;"
     onClick="showParticipants()"/>
 
@@ -29,6 +30,11 @@
   </a>
 </p>
 
+<input class="button" type="button" value="reloadCore()" id="showParticipants"
+    onClick="reloadCore()"/>
+
+<script src="//wal.sh/collaboration-scoring/core.js">
+</script>
 <script src="//wal.sh/collaboration-scoring/app.js">
 </script>
 </body>

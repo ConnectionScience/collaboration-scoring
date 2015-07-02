@@ -1,54 +1,4 @@
-var showParticipants = function() {
-    var participants = gapi.hangout.getParticipants();
-    var retVal = '<p>Participants: </p><ul>';
-    console.log(participants);
-    for (var index in participants) {
-        var participant = participants[index];
-
-        if (!participant.person) {
-            retVal += '<li>A participant not running this app</li>';
-        }
-
-        var broadcaster = '';
-        if (participant.isBroadcaster) {
-            broadcaster = '<b>*</b>';
-        }
-        retVal += '<li>' +
-            broadcaster +
-            '<img width="16" height="16" src="' +
-            participant.person.image.url +
-            '"/> ' +
-            participant.person.displayName +
-            ' <tt>' + participant.person.id + '</tt>' +
-            '</li>';
-    }
-    retVal += '</ul>';
-    var div = document.getElementById('participants');
-    div.innerHTML = retVal;
-};
-
-var showCollaboration = function() {
-    var participants = gapi.hangout.getParticipants();
-    var retVal = 'None';
-    var time = (new Date()).getTime();
-    console.log(time, 'showCollaboration()', participants);
-    if (participants) {
-        for (var index in participants) {
-            var participant = participants[index];
-
-            if (participant && participant.person &&
-                participant.isBroadcaster) {
-                console.log('Broadcasting: ',
-                            participant.person.displayName);
-                retVal = '<tt>' + time + ',' +
-                    participant.person.id  + ',' +
-                    participant.person.displayName + '</tt>';
-            }
-        }
-    }
-    var div = document.getElementById('collaboration');
-    div.innerHTML = '<p>Broadcaster: </p>' + retVal;
-};
+// Dependency: core
 
 var init = function() {
   // When API is ready...
@@ -61,6 +11,40 @@ var init = function() {
       });
 
     setInterval(showCollaboration, 10000);
+
+    var avEvents = [ 'onCameraMute', 'onHasCamera', 'onHasMicrophone',
+                     'onHasSpeakers',
+                     'onLocalAudioNotificationsMuteChanged',
+                     'onLocalParticipantVideoMirroredChanged',
+                     'onMicrophoneMute', 'onVolumesChanged'];
+    avEvents.map(function(e, i, c) {
+        gapi.hangout.av[e].add(
+            function(evt) {
+                console.log(e, evt);
+            }
+        );
+    });
+
+    var hangoutEvents = ['onApiReady', 'onAppVisible',
+                         'onAutoLoadChange',
+                         'onEnabledParticipantsChanged',
+                         'onParticipantsAdded', 'onParticipantsChanged',
+                         'onParticipantsDisabled',
+                         'onParticipantsEnabled',
+                         'onParticipantsRemoved',
+                         'onPreferredLocaleChanged', 'onPublicChanged',
+                         'onTopicChanged'];
+
+    avEvents.map(function(e, i, c) {
+        gapi.hangout[e].add(
+            function(evt) {
+                console.log(e, evt);
+            }
+        );
+    });
+
+
+
 };
 
 // Wait for gadget to load.
