@@ -49,3 +49,16 @@ var showCollaboration = function() {
     var div = document.getElementById('collaboration');
     div.innerHTML = '<p>Broadcaster: </p>' + retVal;
 };
+
+var talkers = {};
+
+// TODO: Throttle
+gapi.hangout.av.onVolumesChanged.add(
+    function(evt) {
+        console.log('Talker', evt, talkers);
+        if (talkers[evt.v]) {
+            talkers[evt.v]++;
+        } else {
+            talkers[evt.v] = 1;
+        }
+    });

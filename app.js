@@ -43,6 +43,12 @@ var init = function() {
         );
     });
 
+    gapi.hangout.av.effects.onFaceTrackingDataChanged.add(
+        function(evt) {
+                console.log('onFaceTrackingDataChanged', evt);
+        });
+
+
 
 
 };
