@@ -55,7 +55,7 @@ var talkers = {};
 // TODO: Throttle
 gapi.hangout.av.onVolumesChanged.add(
     function(evt) {
-        console.log('Talker', evt, talkers);
+        //        console.log('Talker', evt, talkers);
         var volumes = evt.volumes;
         var re = /^hangout/;
         var user = 'unknown';
