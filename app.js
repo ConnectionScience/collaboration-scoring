@@ -49,7 +49,15 @@ var init = function() {
         });
 
 
+    var dataEvents = ['onMessageReceived', 'onStateChanged'];
 
+    dataEvents.map(function(e, i, c) {
+        gapi.hangout.data[e].add(
+            function(evt) {
+                console.log(e, evt);
+            }
+        );
+    });
 
 };
 
