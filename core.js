@@ -63,16 +63,14 @@ gapi.hangout.av.onVolumesChanged.add(
             i.src = 'http://localhost:9999/_.gif?' +
                 (new Date()).getTime() +
                 ',1,' +
-                volumes[k] +
-                ',1';
+                k +
+                ',' + volumes[k];
             if(talkers[k]) {
                 talkers[k] += volumes[k];
             } else {
                 talkers[k] = volumes[k];
             }
         }
-
-        console.log('http://localhost:9999/?onVolumesChanged', evt);
 
         var div = document.getElementById('talking');
         div.innerHTML = '<h2>Talking:</h2><pre>' +
