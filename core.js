@@ -55,18 +55,24 @@ var talkers = {};
 // TODO: Throttle
 gapi.hangout.av.onVolumesChanged.add(
     function(evt) {
-        //        console.log('Talker', evt, talkers);
         var volumes = evt.volumes;
-        var re = /^hangout/;
         var user = 'unknown';
         // merge volumes into known talker state
         for (var k in volumes) {
+            var i = new Image();
+            i.src = 'http://localhost:9999/_.gif?' +
+                (new Date()).getTime() +
+                ',1,' +
+                volumes[k] +
+                ',1';
             if(talkers[k]) {
                 talkers[k] += volumes[k];
             } else {
                 talkers[k] = volumes[k];
             }
         }
+
+        console.log('http://localhost:9999/?onVolumesChanged', evt);
 
         var div = document.getElementById('talking');
         div.innerHTML = '<h2>Talking:</h2><pre>' +

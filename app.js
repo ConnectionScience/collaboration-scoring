@@ -16,7 +16,7 @@ var init = function() {
                      'onHasSpeakers',
                      'onLocalAudioNotificationsMuteChanged',
                      'onLocalParticipantVideoMirroredChanged',
-                     'onMicrophoneMute']; // , 'onVolumesChanged'
+                     'onMicrophoneMute', 'onVolumesChanged'];
     avEvents.map(function(e, i, c) {
         gapi.hangout.av[e].add(
             function(evt) {
