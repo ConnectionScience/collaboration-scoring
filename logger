@@ -1,0 +1,23 @@
+#!/bin/sh
+
+LOG="data/access_log"
+PORT=9999
+
+echo Logging data to $LOG
+echo The Hangouts On-Air widget at http://wal.sh/collaboration-scoring/ will log to
+echo http://localhost:$PORT by using an image pixel end-point
+python -m SimpleHTTPServer $PORT > $LOG 2>&1
+
+# Run this logger
+# Visit  http://wal.sh/collaboration-scoring/
+# Start HOA
+# Name and record scenario
+# Post-process the logs; example:
+#  sed -e 's#.*_.gif?##' -e 's# HTTP/1.1" 200 -##' access_log > collaboration_scoring_scenario1_single.csv
+# Switch to gh-pages branch
+# In test update sample.sh with the YouTube URL and the CSV
+# Run sample.sh
+# Add samples/...html
+# Verify the sample is available at
+#  http://connectionscience.github.io/collaboration-scoring/test/samples/collaboration_scoring_scenario1_single.html
+# View source to see state and timing
