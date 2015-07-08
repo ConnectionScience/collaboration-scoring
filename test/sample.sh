@@ -1,10 +1,12 @@
 #!/bin/sh
 
 
-SCENARIO="collaboration_scoring_scenario3_overtalk"
+SCENARIO="collaboration_scoring_scenario1_single"
+VIDEO="https://www.youtube.com/embed/oT1RPSLa9l0"
+
 DATA="../data/$SCENARIO.csv"
 RENDER="samples/$SCENARIO.html"
-VIDEO="https://www.youtube.com/embed/1sidcsPBFvM"
+
 
 cat prelude.html > $RENDER
 
