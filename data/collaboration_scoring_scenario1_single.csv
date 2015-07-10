@@ -1,4 +1,4 @@
-127.0.0.1 - - [08/Jul/2015 01:43:25] "GET /_.gif
+time,hangout_id,participant_id,volume
 1436334331722,1,hangout82EFB70C_ephemeral.id.google.com^7a88fe6191d420,0
 1436334462755,1,hangoutA2304237_ephemeral.id.google.com^6e03097151c598,2
 1436334462889,1,hangoutA2304237_ephemeral.id.google.com^6e03097151c598,1
