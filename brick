@@ -3,11 +3,21 @@
 LOG="data/access_log"
 PORT=9999
 
-echo Logging data to $LOG
-echo The Hangouts On-Air widget at http://wal.sh/collaboration-scoring/ will log to
-echo http://localhost:$PORT by using an image pixel end-point
-python -m SimpleHTTPServer $PORT > $LOG 2>&1
+if [ -f $LOG ]
+then
+    BACKUP=${LOG}_$(date +%s)
+    mv $LOG $BACKUP
+    echo "Saving previous run in $BACKUP"
+fi
 
+echo Logging data to $LOG
+# The Hangouts On-Air widget at http://wal.sh/collaboration-scoring/ will log to
+# http://localhost:$PORT by using an image pixel end-point
+python -m SimpleHTTPServer $PORT > $LOG 2>&1
+sleep 2
+curl http://localhost:$PORT/_.gif?\#HANGOUT_START
+
+tail -f $LOG
 # Run this logger
 # Visit  http://wal.sh/collaboration-scoring/
 # Start HOA
