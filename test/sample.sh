@@ -1,10 +1,10 @@
 #!/bin/sh
 
 
-SCENARIO="collaboration_scoring_scenario1_single"
-VIDEO="https://www.youtube.com/embed/oT1RPSLa9l0"
+SCENARIO="collaboration_scoring_scenario4_multiple"
+VIDEO="https://www.youtube.com/watch?v=nse01V6NJGA"
 
-DATA="../data/$SCENARIO.csv"
+DATA="../data/access.csv"
 RENDER="samples/$SCENARIO.html"
 
 
