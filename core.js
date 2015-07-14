@@ -67,10 +67,10 @@ gapi.hangout.av.onVolumesChanged.add(
             console.log('Talking', talker);
             var i = new Image();
             i.src = 'https://wal.sh/collaboration-scoring/_.gif?' +
-                (new Date()).getTime() +
+                (new Date()).getTime() + ',' +
                 hangoutId + ',' +
-                k +
-                ',' + volumes[k] + ',' +
+                k + ',' +
+                volumes[k] + ',' +
                 recorderId;
             if(talkers[k]) {
                 talkers[k] += volumes[k];
