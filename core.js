@@ -57,7 +57,7 @@ var talkers = {};
 // TODO: Throttle
 gapi.hangout.av.onVolumesChanged.add(
     function(evt) {
-        var participantId = gapi.hangout.getLocalParticipantId();
+        var recorderId = gapi.hangout.getLocalParticipantId();
         var volumes = evt.volumes;
         var user = 'unknown';
         var hangoutId = evt.target.h.v;
@@ -66,11 +66,10 @@ gapi.hangout.av.onVolumesChanged.add(
             var i = new Image();
             i.src = 'https://wal.sh/collaboration-scoring/_.gif?' +
                 (new Date()).getTime() +
-                ',1,' +
+                hangoutId + ',' +
                 k +
                 ',' + volumes[k] + ',' +
-                hangoutId + ',' +
-                participantId;
+                recorderId;
             if(talkers[k]) {
                 talkers[k] += volumes[k];
             } else {
