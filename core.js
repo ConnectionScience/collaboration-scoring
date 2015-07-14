@@ -63,6 +63,8 @@ gapi.hangout.av.onVolumesChanged.add(
         var hangoutId = evt.target.h.v;
         // merge volumes into known talker state
         for (var k in volumes) {
+            var talker = gapi.hangout.getParticipantById(k);
+            console.log('Talking', talker);
             var i = new Image();
             i.src = 'https://wal.sh/collaboration-scoring/_.gif?' +
                 (new Date()).getTime() +
