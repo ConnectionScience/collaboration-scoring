@@ -27,6 +27,8 @@ var showParticipants = function() {
     div.innerHTML = retVal;
 };
 
+var showParticipantsPolling = setInterval(showParticipants, 2000);
+
 var showCollaboration = function() {
     var participants = gapi.hangout.getParticipants();
     var retVal = 'None';
@@ -55,16 +57,20 @@ var talkers = {};
 // TODO: Throttle
 gapi.hangout.av.onVolumesChanged.add(
     function(evt) {
+        var participantId = gapi.hangout.getLocalParticipant();
         var volumes = evt.volumes;
         var user = 'unknown';
+        var hangoutId = evt.target.h.v;
         // merge volumes into known talker state
         for (var k in volumes) {
             var i = new Image();
-            i.src = 'http://localhost:9999/_.gif?' +
+            i.src = 'https://wal.sh/collaboration-scoring/_.gif?' +
                 (new Date()).getTime() +
                 ',1,' +
                 k +
-                ',' + volumes[k];
+                ',' + volumes[k] + ',' +
+                hangoutId + ',' +
+                participantId;
             if(talkers[k]) {
                 talkers[k] += volumes[k];
             } else {
