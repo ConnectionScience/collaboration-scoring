@@ -1,23 +1,4 @@
 time,hangout_id,participant_id,volume,hangout_id,recorder_id
-192.54.222.4 - - [14/Jul/2015:11:39:14 -0700] "GET /collaboration-scoring/_.gif 
-192.54.222.4 - - [14/Jul/2015:11:39:14 -0700] "GET /favicon.ico 
-192.54.222.4 - - [14/Jul/2015:11:44:01 -0700] "GET /collaboration-scoring/ 
-192.54.222.4 - - [14/Jul/2015:11:44:01 -0700] "GET /collaboration-scoring/icons/9760-200.png 
-192.54.222.4 - - [14/Jul/2015:11:44:02 -0700] "GET /collaboration-scoring/icons/9760-200.png 
-192.54.222.4 - - [14/Jul/2015:11:44:56 -0700] "GET /collaboration-scoring/icons/9760-200.png 
-192.54.222.4 - - [14/Jul/2015:11:44:56 -0700] "GET /collaboration-scoring/app.css 
-192.54.222.4 - - [14/Jul/2015:11:44:56 -0700] "GET /collaboration-scoring/app.js 
-192.54.222.4 - - [14/Jul/2015:11:44:57 -0700] "GET /collaboration-scoring/core.js 
-jwalsh 
-jwalsh3 
-192.54.222.4 - - [14/Jul/2015:12:02:55 -0700] "GET /collaboration-scoring/app.js 
-192.54.222.4 - - [14/Jul/2015:12:07:12 -0700] "GET /collaboration-scoring/icons/ 
-192.54.222.4 - - [14/Jul/2015:12:07:12 -0700] "GET /favicon.ico 
-192.54.222.4 - - [14/Jul/2015:12:07:16 -0700] "GET /collaboration-scoring/ 
-192.54.222.4 - - [14/Jul/2015:12:07:17 -0700] "GET /collaboration-scoring/icons/9760-200.png 
-192.54.222.4 - - [14/Jul/2015:12:08:10 -0700] "GET /collaboration-scoring/app.css 
-192.54.222.4 - - [14/Jul/2015:12:08:10 -0700] "GET /collaboration-scoring/core.js 
-192.54.222.4 - - [14/Jul/2015:12:08:10 -0700] "GET /collaboration-scoring/app.js 
 1436900890856,1,hangoutA82F0A9A_ephemeral.id.google.com^1046457df7b400,2,hangoutA82F0A9A_ephemeral.id.google.com^1046457df7b400,[object%20Object] 
 1436900890949,1,hangoutA82F0A9A_ephemeral.id.google.com^1046457df7b400,1,hangoutA82F0A9A_ephemeral.id.google.com^1046457df7b400,[object%20Object] 
 1436900890970,1,hangoutA82F0A9A_ephemeral.id.google.com^1046457df7b400,2,hangoutA82F0A9A_ephemeral.id.google.com^1046457df7b400,[object%20Object] 
@@ -1029,13 +1010,9 @@ jwalsh3
 1436901175519,1,hangoutA82F0A9A_ephemeral.id.google.com^1046457df7b400,0,hangoutA82F0A9A_ephemeral.id.google.com^1046457df7b400,[object%20Object] 
 1436901175520,1,hangoutF03932EC_ephemeral.id.google.com^c752361cd0,0,hangoutA82F0A9A_ephemeral.id.google.com^1046457df7b400,[object%20Object] 
 1436901175520,1,0000d3a6118f681fb5f0_ephemeral.id.google.com^0F1A8B635C9447AD,0,hangoutA82F0A9A_ephemeral.id.google.com^1046457df7b400,[object%20Object] 
-192.54.222.28 - - [14/Jul/2015:12:12:56 -0700] "GET /collaboration-scoring/app.css 
 1436901175925,1,hangoutA82F0A9A_ephemeral.id.google.com^1046457df7b400,0,hangoutA82F0A9A_ephemeral.id.google.com^1046457df7b400,[object%20Object] 
 1436901175925,1,0000d3a6118f681fb5f0_ephemeral.id.google.com^0F1A8B635C9447AD,0,hangoutA82F0A9A_ephemeral.id.google.com^1046457df7b400,[object%20Object] 
 1436901175925,1,hangoutF03932EC_ephemeral.id.google.com^c752361cd0,1,hangoutA82F0A9A_ephemeral.id.google.com^1046457df7b400,[object%20Object] 
-192.54.222.28 - - [14/Jul/2015:12:12:56 -0700] "GET /collaboration-scoring/core.js 
-192.54.222.28 - - [14/Jul/2015:12:12:56 -0700] "GET /collaboration-scoring/app.js 
-192.54.222.28 - - [14/Jul/2015:12:12:56 -0700] "GET /collaboration-scoring/icons/9760-200.png 
 1436901176230,1,0000d3a6118f681fb5f0_ephemeral.id.google.com^0F1A8B635C9447AD,0,hangoutA82F0A9A_ephemeral.id.google.com^1046457df7b400,[object%20Object] 
 1436901176230,1,hangoutA82F0A9A_ephemeral.id.google.com^1046457df7b400,0,hangoutA82F0A9A_ephemeral.id.google.com^1046457df7b400,[object%20Object] 
 1436901176230,1,hangoutF03932EC_ephemeral.id.google.com^c752361cd0,0,hangoutA82F0A9A_ephemeral.id.google.com^1046457df7b400,[object%20Object] 
