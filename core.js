@@ -59,6 +59,7 @@ gapi.hangout.av.onVolumesChanged.add(
     function(evt) {
         var volumes = evt.volumes;
         var user = 'unknown';
+        var hangoutId = evt.target.h.v;
         // merge volumes into known talker state
         for (var k in volumes) {
             var i = new Image();
@@ -66,7 +67,8 @@ gapi.hangout.av.onVolumesChanged.add(
                 (new Date()).getTime() +
                 ',1,' +
                 k +
-                ',' + volumes[k];
+                ',' + volumes[k] +
+                hangoutId;
             if(talkers[k]) {
                 talkers[k] += volumes[k];
             } else {
