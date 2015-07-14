@@ -27,6 +27,8 @@ var showParticipants = function() {
     div.innerHTML = retVal;
 };
 
+var showParticipantsPolling = setInterval(showParticipants, 2000);
+
 var showCollaboration = function() {
     var participants = gapi.hangout.getParticipants();
     var retVal = 'None';
