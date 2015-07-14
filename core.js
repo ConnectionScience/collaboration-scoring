@@ -57,7 +57,7 @@ var talkers = {};
 // TODO: Throttle
 gapi.hangout.av.onVolumesChanged.add(
     function(evt) {
-        var participantId = gapi.hangout.getLocalParticipant();
+        var participantId = gapi.hangout.getLocalParticipantId();
         var volumes = evt.volumes;
         var user = 'unknown';
         var hangoutId = evt.target.h.v;
