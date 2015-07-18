@@ -1,3 +1,3 @@
-[submodule "collaboration-scoring"]
-	path = collaboration-scoring
-	url = git@github.com:ConnectionScience/collaboration-scoring.git
+[submodule "communication-model"]
+	path = communication-model
+	url = git@github.com:ConnectionScience/communication-model.git
