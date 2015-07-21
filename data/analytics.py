@@ -35,7 +35,8 @@ def get_records_in_range(rs,startTime,endTime):
     return [r for r in rs if int(r[0])>startTime and int(r[0])<endTime]
 
 def longer(records,length=3000):
-    """Records is just a list of events. Length is the desired length to cut by: the issue requests 3 seconds."""
+    """Records is just a list of events. Length is the desired length
+    of a given slice. It defaults to 3 seconds."""
     assert isinstance(length,int) or isinstance(length,float)
     t0,tend = int(records[0][0]),int(records[-1][0])
     i,tlast = t0+length,t0
@@ -50,10 +51,10 @@ def longer(records,length=3000):
                 transformed_records.append(end_stage)
         tlast,i = i,i+length
     return transformed_records
-#compressedRecords=longer(records)
 
 # Here we have the scoring functions.
 def memoize(obj):
+    """Taken from https://wiki.python.org/moin/PythonDecoratorLibrary."""
     cache = obj.cache = {}
     @functools.wraps(obj)
     def memoizer(*args, **kwargs):
@@ -62,16 +63,24 @@ def memoize(obj):
             cache[key] = obj(*args, **kwargs)
         return cache[key]
     return memoizer
+    
 @memoize
 def get_fractions(records):
     x = filter(lambda x:(operator.gt(int(x[3]),1)),records)
     counts = list(map(len,by_participant(x)))
     counts = [len(k) for k in by_participant(x)]
     return [float(count)/sum(counts) for count in counts]
+
 @memoize
 def h_index(records):
     """Returns the Herfindahl index of the fraction of time people spend talking at a minimum volume."""
     return sum(map(lambda x:(x**2),get_fractions(records)))
+
+def n_h_index(records):
+    """Returns the normalized Herfindahl index, which goes from 0 to 1
+    in all cases. """
+    n = len(records)
+    return (h_index(records)-1.0/n)/(1-1.0/n)
 
 def double_domination(records):
     #The advantage of this over the Herfindahl index is that it's supported by the conversational literature.
