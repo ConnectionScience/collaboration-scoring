@@ -63,7 +63,7 @@ def memoize(obj):
             cache[key] = obj(*args, **kwargs)
         return cache[key]
     return memoizer
-    
+
 @memoize
 def get_fractions(records):
     x = filter(lambda x:(operator.gt(int(x[3]),1)),records)
@@ -77,8 +77,10 @@ def h_index(records):
     return sum(map(lambda x:(x**2),get_fractions(records)))
 
 def n_h_index(records):
-    """Returns the normalized Herfindahl index, which goes from 0 to 1
-    in all cases. """
+    """Returns the normalized Herfindahl index.
+    Total equality returns 0. Total inequality returns 1. Most values
+    will be intermediate.
+    """
     n = len(records)
     return (h_index(records)-1.0/n)/(1-1.0/n)
 
