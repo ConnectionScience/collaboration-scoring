@@ -26,4 +26,10 @@ An example of the cleanup required to translate Apache logs to CSV:
     S=gwvft75j4edv4recs274ms4r5aa
     echo time,hangout_id,participant_id,volume >> $S.log
     grep ^1 access_log_1436821323 | sed -e 's#.*_.gif?##' -e 's#
-    HTTP/1.1" 200 -##' -e "s#,1,#,$S,#" 
+    HTTP/1.1" 200 -##' -e "s#,1,#,$S,#"
+
+# Team 
+
+- @dazzagi
+- @kellerscholl
+- @jwalsh
