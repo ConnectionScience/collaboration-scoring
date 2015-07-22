@@ -1,0 +1,6 @@
+setup.py
+collab_scoring.egg-info/PKG-INFO
+collab_scoring.egg-info/SOURCES.txt
+collab_scoring.egg-info/dependency_links.txt
+collab_scoring.egg-info/requires.txt
+collab_scoring.egg-info/top_level.txt

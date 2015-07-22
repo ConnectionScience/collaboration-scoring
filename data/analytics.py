@@ -1,3 +1,8 @@
+"""
+Contains functionality for analysis.
+A large number of functions, and a class implementation.
+"""
+
 import csv
 import math
 import operator
@@ -72,9 +77,14 @@ def get_fractions(records):
     return [float(count)/sum(counts) for count in counts]
 
 @memoize
-def h_index(records):
-    """Returns the Herfindahl index of the fraction of time people spend talking at a minimum volume."""
-    return sum(map(lambda x:(x**2),get_fractions(records)))
+def h_index(records,power=2):
+    """Returns the Herfindahl index of the fraction of time people spend 
+    talking at a minimum volume.
+    power: the power to take every fraction to. Defaults to two, because that's
+    what's used in the inverse participation ratio and the Herfindahl index.
+    There is no a priori reason to privilege squares over other powers.
+    """
+    return sum(map(lambda x:(x**power),get_fractions(records)))
 
 def n_h_index(records):
     """Returns the normalized Herfindahl index.
@@ -107,6 +117,10 @@ def pause_count(records,min_pause_length,max_pause_length):# The meaning of minV
                                               operator.lt(x,max_pause_length))),
                                 time_diffs))/float(len(records)-1)
 
+def shannon_index(records):
+    f = get_fractions(records)
+    h = -1*sum(map(lambda x:(operator.mul(math.ln(x),x)),f))
+    return h/ln(len(f))
 
 def track_changes(records,scoring_function,lookback=50,frequency=5):
     """Reports the changes in the scoring function of records over time.
@@ -122,7 +136,12 @@ def track_changes(records,scoring_function,lookback=50,frequency=5):
 1. Find a relationship between score and metric, with probit model(Were the aggregated scores in the top half?)
 2. Spit out likelihood ratios relative to old prior?"""
 """Train a probit model taking in success and collaboration rating, see how it improves over P(success)=.5."""
-
+"""Probit model: \sum\limits_{i=1}^n [Y_i-\phi (b_0 + b_1 X_1 + ... + b_k X_{ki})]^2"""
+def probit(outcomes,records_list,mapping):
+    # mapping should be a function that takes in a record and returns the probability of output being 1.
+    assert len(outcomes)==len(records_list)
+    return sum((outcomes[i]-mapping(records_list[i]))**2 for i in range(len(outcomes)))
+    
 def AIC(records,SSR,p):
     """ln(SSR(p)/T + (p+1)2/T is the formula. The lower this is, the 
         better the fit. This is the Akaike Information Criterion.
@@ -130,3 +149,41 @@ def AIC(records,SSR,p):
         accurately represents reality, so I am finding the one that
         fits best. """
     return math.ln(SSR(records,p)/math.ln(len(records)))+(p+1)*2/len(records)
+
+class recording:
+    """Functionality identical to functions present in this module,
+    with identical names. For those who prefer to have objects.
+    In a few places, object oriented functionality has been added."""
+    def __init__(self,records):
+        self.records = records
+        self.times = set(map(int,self.get_from_records(0)))
+        self.hangout_ids = set(self.get_from_records(1))
+        self.participant_ids = set(self.get_from_records(2))#Not an int.
+        self.vols = list(map(int,self.get_from_records(3)))
+        self.vol_range = set(vols)
+    def pause_count(self,min_pause_length,max_pause_length):
+        return pause_count(self.records,min_pause_length,max_pause_length)
+    def crosstalk(self):
+        return crosstalk(self.records)
+    def track_changes(self,scoring_function,lookback=50,frequency=5):
+        return track_changes(self.records,scoring_function,lookback=50,frequency=5)
+    def double_domination(self):
+        return double_domination(self.records)
+    def h_index(self):
+        return h_index(self.records)
+    def n_h_index(self):
+        return n_h_index(self.records)
+    def get_fractions(self):
+        return get_fractions(self.records)
+    def longer(self,length=3000):
+        return longer(self.records,length)
+    def compress(self,length):
+        self.records = self.longer(length)
+    def by_participant(self):
+        return by_participant(self.records)
+    def by_hangout(self):
+        return by_hangout(self.records)
+    def get_records_in_range(self,start_time,end_time):
+        return get_records_in_range(self.records,start_time,end_time)
+    def get_from_records(self,index):
+        return get_from_records(self.records,index)
