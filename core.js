@@ -11,6 +11,7 @@ var showParticipantsPolling = setInterval(showParticipants, 5000);
 var talkers = {};
 
 // TODO: Throttle
+if (gapi) {
 gapi.hangout.av.onVolumesChanged.add(
     function(evt) {
         embed.contentWindow.postMessage(JSON.stringify(evt), '*');
@@ -36,3 +37,4 @@ gapi.hangout.av.onVolumesChanged.add(
         }
 
     });
+}
