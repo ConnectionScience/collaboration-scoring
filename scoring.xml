@@ -7,37 +7,16 @@
   </ModulePrefs>
   <Content type="html"><![CDATA[
 <html>
-<link rel="stylesheet" href="//wal.sh/collaboration-scoring/app.css" />
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"/>
-
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js" charset="utf-8"></script>
-
-<script src="//plus.google.com/hangouts/_/api/v1/hangout.js"></script>
-
-<h3>Collaboration Scores</h3>
-
-<div id="participants"></div>
-<div id="collaboration"></div>
-<div id="talking"></div>
-
-<p>
-  <a target="_https"
-     href="//wal.sh/collaboration-scoring/icons/9760-200.png">
-    <img src="//wal.sh/collaboration-scoring/icons/9760-200.png"/>
-  </a>
-</p>
-
+<body>
 <iframe src="//wal.sh/collaboration-scoring/communication-model">
 </iframe>
 
-<script src="//wal.sh/collaboration-scoring/core.js">
-</script>
-<script src="//wal.sh/collaboration-scoring/app.js">
-</script>
+<script src="//plus.google.com/hangouts/_/api/v1/hangout.js"></script>
+<script src="bower_components/easyxdm/src/easyXDM.debug.js"></script>
+<script src="//wal.sh/collaboration-scoring/core.js"></script>
+
 </body>
+</html>
 ]]>
   </Content>
 </Module>
