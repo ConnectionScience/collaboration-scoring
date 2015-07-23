@@ -8,11 +8,10 @@
   <Content type="html"><![CDATA[
 <html>
 <body>
-<iframe src="//wal.sh/collaboration-scoring/communication-model">
+<iframe width="100%" height="100%" src="embed.html">
 </iframe>
 
 <script src="//plus.google.com/hangouts/_/api/v1/hangout.js"></script>
-<script src="bower_components/easyxdm/src/easyXDM.debug.js"></script>
 <script src="//wal.sh/collaboration-scoring/core.js"></script>
 
 </body>
