@@ -1,3 +1,0 @@
-[submodule "communication-model"]
-	path = communication-model
-	url = git@github.com:ConnectionScience/communication-model.git
